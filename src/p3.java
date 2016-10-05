@@ -64,7 +64,7 @@ public class p3 {
                 break;
             default:
                 System.out.println(menuOption + " - Not a valid menu choice!");
-                return;
+                break;
         }
     }
 
