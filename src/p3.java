@@ -1,6 +1,10 @@
 import org.cs3431.Query;
 import org.cs3431.SQLConnector;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * @author Stephen Andrews
  * @since 10/4/16
@@ -35,11 +39,22 @@ public class p3 {
         connector.openConnection();
         Query query = new Query(connector);
 
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         //Switch based on user input
         int menuOption = Integer.valueOf(cArgs[2]);
         switch (menuOption) {
             case 1:
-                query.reportProviderInfo(71);
+                while (true) {
+                    System.out.println("Enter Provider ID: ");
+                    int providerID = 0;
+                    try {
+                        providerID = Integer.valueOf(in.readLine());
+                        query.reportProviderInfo(providerID);
+                        break;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case 2:
                 break;
